@@ -29,7 +29,8 @@
 	<developers>
 		<developer>
 			<name>Dave Mulcahey</name>
-			<email></email>
+			<email>david.mulcahey@hotmail.com</email>
+			<organizationUrl>https://github.com/dmulcahey</organizationUrl>
 		</developer>
 	</developers>
 
@@ -38,5 +39,5 @@
 		<developerConnection>scm:git:git@github.com:dmulcahey/parent-pom.git</developerConnection>
 		<url>git@github.com:dmulcahey/parent-pom.git</url>
 	</scm>
-	
+
 </project>
