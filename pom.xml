@@ -20,6 +20,12 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.testSource>${java.version}</maven.compiler.testSource>
 		<maven.compiler.testTarget>${java.version}</maven.compiler.testTarget>
+		<gpg.executable>gpg</gpg.executable>
+		<gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
+		<gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+		<gpg.defaultKeyring>false</gpg.defaultKeyring>
+		<gpg.publicKeyring>${env.GPG_DIR}/pubring.gpg</gpg.publicKeyring>
+		<gpg.secretKeyring>${env.GPG_DIR}/secring.gpg</gpg.secretKeyring>
 	</properties>
 
 	<licenses>
@@ -93,30 +99,19 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 </project>
